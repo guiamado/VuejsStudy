@@ -4,6 +4,15 @@
         <title>My first Vue app</title>
         <script src="https://unpkg.com/vue"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <link rel="stylesheet" type="text/css" href="mystyle.css">
+        <style>
+            .fade-enter-atractive, .fade-leave-active{
+                transition: opacity .5s;
+            }
+            .fade-enter, .fade-leave-to{
+                opacity: 0;
+            }
+        </style>
     </head>
     <body>
         <div id="app">
@@ -45,6 +54,12 @@
                     v-bind:key="item.id">
                 </todo-item>
             </ol>
+        </div>
+        <div id="app-8">
+            <button v-on:click="show = !show">Click Here to see something new</button>
+            <transition name="fade">
+                <p v-if="show">Something New</p>
+            </transition>
         </div>
 
     <script>
@@ -112,6 +127,12 @@
                     ]
                 }
               })
+    var app8 = new Vue({
+              el: '#app-8',
+              data: {
+                    show: false
+                    }
+                  })
     </script>
     </body>
 </html>
